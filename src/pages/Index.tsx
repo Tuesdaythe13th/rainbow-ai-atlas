@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Copy, Check, Sparkles, Code2, Layers, Zap } from "lucide-react";
+import { Copy, Check, Sparkles, Code2, Layers, Zap, Eye } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
+import { TaxonomyVisualization } from "@/components/TaxonomyVisualization";
 
 const pythonCode = `import json
 import pandas as pd
@@ -64,6 +65,7 @@ fig.show()`;
 
 const Index = () => {
   const [copied, setCopied] = useState(false);
+  const [showCode, setShowCode] = useState(false);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(pythonCode);
@@ -106,11 +108,32 @@ const Index = () => {
               <span className="text-sm font-medium">Interactive Sunburst</span>
             </div>
           </div>
+
+          <div className="flex gap-4 justify-center pt-8">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-medium hover:shadow-glow transition-all duration-300"
+              onClick={() => setShowCode(!showCode)}
+            >
+              <Eye className="w-5 h-5 mr-2" />
+              {showCode ? "Hide Source Code" : "View Source Code"}
+            </Button>
+          </div>
         </div>
       </header>
 
+      {/* Visualization Section */}
+      <section className="container mx-auto px-4 pb-16">
+        <Card className="max-w-7xl mx-auto overflow-hidden shadow-medium hover:shadow-glow transition-all duration-500 animate-scale-in border-2 bg-card">
+          <div className="p-8">
+            <TaxonomyVisualization />
+          </div>
+        </Card>
+      </section>
+
       {/* Code Section */}
-      <section className="container mx-auto px-4 pb-24">
+      {showCode && (
+        <section className="container mx-auto px-4 pb-24">
         <Card className="max-w-6xl mx-auto overflow-hidden shadow-medium hover:shadow-glow transition-all duration-500 animate-scale-in border-2">
           <div className="bg-gradient-code px-6 py-4 flex items-center justify-between border-b border-border/10">
             <div className="flex items-center gap-3">
@@ -160,8 +183,11 @@ const Index = () => {
             </SyntaxHighlighter>
           </div>
         </Card>
+        </section>
+      )}
 
         {/* Features Grid */}
+        <section className="container mx-auto px-4 pb-16">
         <div className="max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-6">
           <Card className="p-6 space-y-3 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border">
             <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -193,7 +219,7 @@ const Index = () => {
             </p>
           </Card>
         </div>
-      </section>
+        </section>
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center text-muted-foreground border-t">
