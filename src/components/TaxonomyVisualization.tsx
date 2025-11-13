@@ -122,22 +122,28 @@ export const TaxonomyVisualization = () => {
       hovertext: hovertext,
       hovertemplate: '<b>%{label}</b><br>%{hovertext}<extra></extra>',
       marker: {
-        colorscale: 'Rainbow',
-        line: { color: 'white', width: 1 }
+        colors: ids.map((_, i) => `hsl(${(i * 360 / ids.length)}, 85%, 65%)`),
+        line: { color: 'white', width: 2 }
       },
+      textfont: {
+        size: 12,
+        color: 'white',
+        family: 'Arial, sans-serif'
+      },
+      insidetextorientation: 'radial',
       branchvalues: 'total'
     }];
 
     const layout = {
-      margin: { t: 80, l: 0, r: 0, b: 0 },
-      title: {
-        text: '🌈 Agentic AI Component Taxonomy v3.0<br><sub>Interactive Sunburst Visualization</sub>',
-        font: { size: 24, family: 'Arial Black, sans-serif', color: '#2c3e50' }
-      },
-      font: { family: 'Arial, sans-serif' },
+      margin: { t: 10, l: 0, r: 0, b: 0 },
+      font: { family: 'Arial, sans-serif', size: 13 },
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
-      autosize: true
+      autosize: true,
+      sunburstcolorway: [
+        '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8',
+        '#F7DC6F', '#BB8FCE', '#85C1E2', '#F8B739', '#52C9A5'
+      ]
     };
 
     const config = {
