@@ -312,13 +312,17 @@ export const TaxonomyVisualization = () => {
       hovertext: hovertext,
       hovertemplate: '<b>%{label}</b><br>%{hovertext}<extra></extra>',
       marker: {
-        colors: ids.map((_, i) => `hsl(${(i * 360 / ids.length)}, 85%, 65%)`),
+        colors: ids.map((id) => {
+          const depth = id.split(':')[1].split('-')[1].split('.').length;
+          const lightness = 100 - (depth * 10);
+          return `hsl(0, 0%, ${Math.max(lightness, 20)}%)`;
+        }),
         line: { color: 'white', width: 2 }
       },
       textfont: {
         size: 13,
         color: 'white',
-        family: 'Space Grotesk, system-ui, -apple-system, sans-serif',
+        family: 'Array, sans-serif',
         weight: 900
       },
       insidetextorientation: 'radial',
@@ -327,14 +331,10 @@ export const TaxonomyVisualization = () => {
 
     const layout = {
       margin: { t: 10, l: 0, r: 0, b: 0 },
-      font: { family: 'Space Grotesk, system-ui, -apple-system, sans-serif', size: 13, weight: 900 },
-      paper_bgcolor: 'rgba(0,0,0,0)',
-      plot_bgcolor: 'rgba(0,0,0,0)',
-      autosize: true,
-      sunburstcolorway: [
-        '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8',
-        '#F7DC6F', '#BB8FCE', '#85C1E2', '#F8B739', '#52C9A5'
-      ]
+      font: { family: 'Khand, sans-serif', size: 13, weight: 600 },
+      paper_bgcolor: 'white',
+      plot_bgcolor: 'white',
+      autosize: true
     };
 
     const config = {
