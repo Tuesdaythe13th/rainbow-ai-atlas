@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# The Agentic Component Taxonomy Atlas
 
 ## Project info
 
