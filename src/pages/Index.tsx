@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
 import { TaxonomyVisualization } from "@/components/TaxonomyVisualization";
+import { AutomotiveBenchmarkVisualization } from "@/components/AutomotiveBenchmarkVisualization";
 
 const pythonCode = `import json
 import pandas as pd
