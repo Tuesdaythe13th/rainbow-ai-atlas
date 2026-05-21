@@ -132,6 +132,30 @@ const Index = () => {
         </Card>
       </section>
 
+      {/* Automotive Benchmark Section */}
+      <section className="container mx-auto px-4 pb-16">
+        <div className="max-w-7xl mx-auto text-center mb-8 space-y-3 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary border border-secondary/20 backdrop-blur-sm">
+            <Zap className="w-4 h-4" />
+            <span className="text-sm font-medium">Benchmark Suite v1.0</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            <span className="gradient-text">Automotive Benchmark</span>
+            <br />
+            <span className="text-foreground">Model Taxonomy</span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Comprehensive model set for autonomous vehicle evaluation — perception, prediction, foundation models, VLA, and specialized components.
+          </p>
+        </div>
+        <Card className="max-w-7xl mx-auto overflow-hidden shadow-medium hover:shadow-glow transition-all duration-500 animate-scale-in border-2 bg-card">
+          <div className="p-8">
+            <AutomotiveBenchmarkVisualization />
+          </div>
+        </Card>
+      </section>
+
+
       {/* Code Section */}
       {showCode && (
         <section className="container mx-auto px-4 pb-24">
